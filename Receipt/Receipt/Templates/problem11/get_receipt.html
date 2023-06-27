@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Get Receipt</title>
+    <style>
+        .container {
+            background-color: #1FDAA2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            margin: 0 auto;
+            width: 300px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        input[type="text"], select {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Digital Academy</h1>
+        <form action="{% url 'get_receipt' %}" method="GET">
+            <label for="receipt_number">Receipt Number:</label>
+            <input type="text" name="receipt_number" id="receipt_number" required>
+            <br>
+            <label for="display_option">Display Option:</label>
+            <select name="display_option" id="display_option" required>
+                <option value="">-- Select Display Option --</option>
+                <option value="pdf_horizontal">PDF (Horizontal)</option>
+                <option value="pdf_vertical">PDF (Vertical)</option>
+                <option value="receipt_details">Receipt Details</option>
+            </select>
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+</html>

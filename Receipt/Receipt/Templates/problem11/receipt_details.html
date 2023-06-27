@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Receipt</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1c1c1c;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .receipt-container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #CFDA1F;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .receipt-header {
+            text-align: center;
+            color: #000000;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .receipt-details {
+            margin-bottom: 20px;
+        }
+
+        .receipt-details-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .receipt-details-label {
+            color: #000000;
+            font-weight: bold;
+        }
+
+        .receipt-details-value {
+            text-align: right;
+            color: #000000;
+        }
+
+        .receipt-signature {
+            text-align: right;
+            margin-top: 20px;
+            color: #000000;
+        }
+    </style>
+</head>
+<body>
+    <div class="receipt-container">
+        <div class="receipt-header">
+            <h1>Digital Academy</h1>
+        </div>
+        <div>
+            <a href="{% url 'get_receipt' %}">Go to Get Receipt page</a>
+        </div>
+        <div class="receipt-details">
+            {% if receipt %}
+                <div class="receipt-details-row">
+                    <div class="receipt-details-label">Receipt Number:</div>
+                    <div class="receipt-details-value">{{ receipt.receipt_no }}</div>
+                </div>
+                <div class="receipt-details-row">
+                    <div class="receipt-details-label">Name:</div>
+                    <div class="receipt-details-value">{{ receipt.name }}</div>
+                </div>
+                <div class="receipt-details-row">
+                    <div class="receipt-details-label">Date:</div>
+                    <div class="receipt-details-value">{{ receipt.date }}</div>
+                </div>
+                <div class="receipt-details-row">
+                    <div class="receipt-details-label">Standard:</div>
+                    <div class="receipt-details-value">{{ receipt.standard }}</div>
+                </div>
+                <div class="receipt-details-row">
+                    <div class="receipt-details-label">Section:</div>
+                    <div class="receipt-details-value">{{ receipt.section }}</div>
+                </div>
+                <div class="receipt-details-row">
+                    <div class="receipt-details-label">Enrollment No:</div>
+                    <div class="receipt-details-value">{{ receipt.enrollment_no }}</div>
+                </div>
+                <div class="receipt-details-row">
+                    <div class="receipt-details-label">Amount:</div>
+                    <div class="receipt-details-value">{{ receipt.amount }}</div>
+                </div>
+                <div class="receipt-details-row">
+                    <div class="receipt-details-label">Received:</div>
+                    <div class="receipt-details-value">{{ receipt.received }}</div>
+                </div>
+                <div class="receipt-details-row">
+                    <div class="receipt-details-label">Status:</div>
+                    <div class="receipt-details-value">{{ receipt.status }}</div>
+                </div>
+                <div class="receipt-details-row">
+                    <div class="receipt-details-label">Signature:</div>
+                    <div class="receipt-details-value">{{ receipt.signature }}</div>
+                </div>
+            {% else %}
+                <p>No receipt details found.</p>
+            {% endif %}
+        </div>
+        <div class="receipt-signature">
+            Receiver Signature
+        </div>
+    </div>
+</body>
+</html>
