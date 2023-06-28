@@ -35,3 +35,13 @@ To develop a reporting utility for generating customized PDF and XLSX reports, f
     - python manage.py runserver
 
 This structure and configuration will provide you with a foundation to develop a reporting utility using Python with the Django framework. Remember to implement additional functionalities and customize the solution according to your specific requirements.
+====================================================================================================================================
+If you to save your file into s3 bucket so you follow these seteps
+
+1.Create Aws account 
+2.create a s3 bucket 
+3.genrate a AWS_ACCESS_KEY and AWS_SECERT_Key 
+4.Update settings.py as well 
+5.update arn as well 
+
+
