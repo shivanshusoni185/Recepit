@@ -1,123 +1,37 @@
-Problem statement11:-
+To develop a reporting utility for generating customized PDF and XLSX reports, follow these steps in a professional manner:
 
-Develop a reporting utility for generating customized PDF and XLSX reports by extracting data from a database,
-in-memory data, external systems like Mambu, or through APIs. The utility should allow users to define report
-templates with corresponding queries or logic to retrieve the reqta. Users should also be able to provide 
-input parameters to further customize the report generation process. The objectiuired dave is to create a flexible and 
-efficient reporting solution that can seamlessly retrieve data from various sources and generate professional-looking 
-reports in PDF or XLSX format. The challenge is to design and implement his reporting utility with focusing on data 
-retrieval mechanisms, template customization, and output generation in tthe desired file formats.
-=========================================================================================================
-For this we are using python with django framework
+1. Install Python 3.9 and the Django framework. You can use IDEs like VSCode or PyCharm for development.
+2. Create a folder for your project. Open the folder in your preferred IDE.
+3. Install additional libraries required for the project, including boto3, requests, and reportlab. Use the following commands:
+   - pip install django
+   - pip install boto3
+   - pip install reportlab
+   - pip install requests
 
-Requirements:-
-Python3.9
-install django framework
-IDE(VSCode or PyCharm)
-Required a aws account for send file in s3 bucket
-follow this link for setup of s3 bucket-->
+4. Initialize your Django project using the following command:
+   - django-admin startproject Name_of_project
 
-Make sure your path is added in the environoment variables
-====================================================================================================================
+5. Update the project's settings in the settings.py file:
+   - Add the name of your project to INSTALLED_APPS.
+   - Update the TEMPLATES directory to include the path to your template folder.
 
-Create a folder->Name_of_folder
-open this folder inside vscode , once the folder is open 
-Install django Inside it,Use django so, you need to install django on your folder use this command ,
+6. If you intend to upload files to an AWS S3 bucket, configure the AWS settings in the settings.py file as well. Otherwise, you can skip this step.
 
-*pip install django
+7. Define your database models in the models.py file. Specify the required fields for your database.
 
-we also need so more libary like boto3,requests,reportlab to install this use these commands
-pip install boto3
-pip install reportlab
-pip install requests
-====================================================================================================================
-After all installation we need create our django project so create django project use this command 
+8. Register your models in the admin.py file using admin.site.register(Name_of_model), replacing "Name_of_model" with the appropriate model name.
 
-django-admin startproject Name_of_project
+9. Perform migrations to create the database tables. Use the following commands:
+   - python manage.py makemigrations Name_of_project (replace "Name_of_project" with your project name)
+   - python manage.py migrate
 
-once you hit enter it creates somefile for you like 
-asgi.py
-urls.py
-settings.py
-wsgi.py
+10. Define the URL paths for your application in the urls.py file.
 
-we create some more files as well like :-
-models.py
-views.py
-admin.py
+11. Implement the custom logic for report generation in the views.py file. Create functions that handle the retrieval of data from various sources, generate the reports, and customize them based on user input.
 
-This is the basic structure of django project structure 
+12. Connect the functions in views.py with the corresponding URLs in the urls.py file.
 
-***We also need a one Template folder where we can put our all the .html .css page and file 
-=========================================================================================================================
-settings.py
-Update your settings INSTALLED_APPS but your project inside INSTALLED_APPS 
-example INSTALLED_APPS=['Name_of_project',]
+13. Start the development server using the following command:
+    - python manage.py runserver
 
-Update Templates DIR as well
- TEMPLATES = [
-    {
-        
-        'DIRS': [os.path.join(BASE_DIR, '/Templates')],
-
-If your want to upload your files in s3 bucket so bucket this in last of settings files as well you not want to upload in s3 so leave it as it 
-
-AWS_ACCESS_KEY_ID ='*****'
-AWS_SECRET_ACCESS_KEY = '*****************'
-AWS_STORAGE_BUCKET_NAME = '**************'
-AWS_S3_SIGNATURE_NAME = '*****',
-AWS_S3_REGION_NAME = '******'
-AWS_S3_FILE_OVERWRITE = False
-AWS_DEFAULT_ACL =  None
-AWS_S3_VERITY = True
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-============================================================================================================================
-
-Models.py:-This file is used for Database Here we can define what kind of database field is required .
-
-Once Model.py is done register it into the Admnin.py(admin.site.register(Name_of_model)) take name of model form models.py 
-
-perform migration as well perfrom migration we need to follow this commands
-
-python manage.py runserver makemigrations Name_of_Project #That you register in a settings
-
-python manage.py migrate 
-
-once this commands run sucessfully that means database created sucessfully
-========================================================================================================================================
-
-urls.py
-
-In this file we can declared all the path for urls
-
-
-===========================================================================================================================================
-views.py
-
-This is the important file of django app here we can put all the custom logic in the form of functions and connected this functions with urls.py
-================================================================================================================================================
-To run this project locate a manage.py in project folder and use this command
-python manage.py runserver
-This is the entire structure how we can create and configure django project 
-
-=============================================================================================================================================
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+This structure and configuration will provide you with a foundation to develop a reporting utility using Python with the Django framework. Remember to implement additional functionalities and customize the solution according to your specific requirements.
