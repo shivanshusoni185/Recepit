@@ -43,5 +43,35 @@ If you to save your file into s3 bucket so you follow these seteps
 3.genrate a AWS_ACCESS_KEY and AWS_SECERT_Key 
 4.Update settings.py as well 
 5.update arn as well 
+If you only want to upload files to an AWS S3 bucket from your Django application without the need for retrieval, you can follow these steps:
+
+1. Create an AWS account if you haven't already.
+
+2. Go to the AWS Management Console and sign in.
+
+3. Navigate to the S3 service.
+
+4. Create a new S3 bucket with a unique name.
+
+5. Generate AWS access keys (Access Key ID and Secret Access Key) in the AWS Management Console.
+
+6. Update your Django project's `settings.py` file with the AWS S3 configurations:
+   - Set `AWS_ACCESS_KEY_ID` to your generated Access Key ID.
+   - Set `AWS_SECRET_ACCESS_KEY` to your generated Secret Access Key.
+   - Set `AWS_STORAGE_BUCKET_NAME` to the name of your S3 bucket.
+   - Set `AWS_S3_REGION_NAME` to the region where your S3 bucket is located.
+   - Set `DEFAULT_FILE_STORAGE` to `'storages.backends.s3boto3.S3Boto3Storage'`.
+
+7. Install the `django-storages` library.
+
+8. Add `'storages'` to the `INSTALLED_APPS` list in `settings.py`.
+
+9. Update the `TEMPLATES` directory in `settings.py` to include the path to your template folder.
+
+10. Run the command `python manage.py collectstatic` to collect static files (if any) and upload them to the S3 bucket.
+
+11. Handle the necessary permissions and access control for the S3 bucket in the AWS Management Console.
+
+With these steps, your Django application will be configured to upload files to the specified AWS S3 bucket. You can use the appropriate Django form or view logic to handle file uploads and save them to the S3 bucket using the configured storage backend.
 
 
